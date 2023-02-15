@@ -13,8 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pagamento_formas', function (Blueprint $table) {
+        Schema::create('fornecedor', function (Blueprint $table) {
             $table->id();
+            $table->BigInteger('codigo_conta');
+            $table->string("nif_pessoal");
+            $table->string("nome_empresa");
+            $table->string("telefone");
+            $table->string("fax")->nullable();
+            $table->string("email")->nullable();
+            $table->string("website")->nullable();
+            $table->string("endereco");
             $table->timestamps();
             $table->softdeletes();
         });
@@ -27,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagamento_formas');
+        Schema::dropIfExists('fornecedor');
     }
 };

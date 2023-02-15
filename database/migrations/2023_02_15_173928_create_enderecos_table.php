@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nota_fiscals', function (Blueprint $table) {
+        Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
+            $table->text("descricao");
+            $table->string("casa");
+            $table->string("bairro");
+            $table->foreignId('id_municipio')->constrained('municipios');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nota_fiscals');
+        Schema::dropIfExists('enderecos');
     }
 };

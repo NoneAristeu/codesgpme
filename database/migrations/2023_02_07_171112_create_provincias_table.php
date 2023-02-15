@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('provincias', function (Blueprint $table) {
             $table->id();
+            $table->string("provincia");
+            $table->enum("estado",[1,0]);
+            $table->foreignId('id_pais')->constrained('pais');
             $table->timestamps();
             $table->softDeletes();
         });

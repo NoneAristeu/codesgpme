@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cliente_grupos', function (Blueprint $table) {
+        Schema::create('armazem', function (Blueprint $table) {
             $table->id();
+            $table->string("descricao");
+            $table->string("endereco");            
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente_grupos');
+        Schema::dropIfExists('armazem');
     }
 };

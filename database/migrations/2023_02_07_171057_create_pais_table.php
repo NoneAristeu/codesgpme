@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('pais', function (Blueprint $table) {
             $table->id();
+            $table->string("pais");
+            $table->enum("estado",[1,0]);
             $table->timestamps();
             $table->softDeletes();
         });
