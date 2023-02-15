@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pagamento_formas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

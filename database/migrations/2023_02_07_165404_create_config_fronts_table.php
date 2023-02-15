@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('config_fronts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

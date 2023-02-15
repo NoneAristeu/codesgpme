@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('historico_atividade_usuarios', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
