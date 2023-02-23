@@ -16,7 +16,8 @@ const routes = [
      //pages
      {
         path: '/',
-        component: homePageIndex
+        component: login
+    
     },
      //login
      {
