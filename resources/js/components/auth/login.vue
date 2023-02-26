@@ -2,36 +2,59 @@
     <div class="principal">        
         <div class="box">
             <span class="borderline"></span>
-            <form action="">
+            <form @submit.prevent="login">
                 <h2>Sign in</h2>
                 <div class="inputBox">
-                    <input type="text" required>
-                    <span>Username</span>
+                    <input type="email" id="email" v-model="email" required>
+                    <span>Email</span>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="password" required>
+                    <input type="password" id="password" v-model="password" required>
                     <span>Password</span>
                     <i></i>
                 </div>
 
                 <div class="links">
                     <a href="#">forgot password</a>
-                    <a href="#">signup</a>
+                    
                 </div>
+                <input type="hidden" name="_token" :value="csrfToken">
                 <input type="submit" value="Entrar">
             </form>
         </div>
     </div>
     
 </template>
-<script setup>
-    // import { reactive } from 'vue'; 
+<script>
 
-    // let form = reactive({
-    //     email: '',
-    //     password: ''
-    // })
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      csrfToken: csrfToken
+    }
+  },
+  methods: {
+    async login() {
+      try {
+        const response = await axios.post('/login', {
+          email: this.email,
+          password: this.password
+        });
+        if (response.data.success) {
+      this.$router.push(response.data.redirect);
+    }
+       // console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+}
 
 </script>
 <style>

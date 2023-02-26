@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+
+Route::middleware(['web', 'session'])->group(function () {
+    // Rotas que precisam acessar ou manipular a sessão aqui
+
+    Route::post('/users', 'App\Http\Controllers\UserController@index');
+});
+
+

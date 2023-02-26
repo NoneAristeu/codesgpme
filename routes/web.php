@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/login', 'App\Http\Controllers\UserController@index');
+
 Route::get('/{pathMatch}', function ()
 {
     return view('welcome');
